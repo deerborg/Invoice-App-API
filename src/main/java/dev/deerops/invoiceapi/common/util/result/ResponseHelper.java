@@ -14,4 +14,8 @@ public class ResponseHelper {
         return new ApiResponse<>(true,"Updated",data);
     }
 
+    public static <T> ApiResponse<T> ERROR(String message){
+        return new ApiResponse<>(true,message,null);
+    }
+
 }

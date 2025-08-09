@@ -17,7 +17,7 @@ public class Invoice {
 
     private String customerEmail;
 
-    private String totalAmount;
+    private Double totalAmount;
 
     private Double taxAmount;
 
@@ -25,16 +25,14 @@ public class Invoice {
 
     private String details;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
 
 
-
-
-    public Invoice(Long invoiceId, String customerName, String customerEmail, String totalAmount, Double taxAmount, Double subTotal, String details, LocalDateTime createdAt, User user) {
+    public Invoice(Long invoiceId, String customerName, String customerEmail, Double totalAmount, Double taxAmount, Double subTotal, String details, LocalDateTime createdAt, User user) {
         this.invoiceId = invoiceId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -73,11 +71,11 @@ public class Invoice {
         this.customerEmail = customerEmail;
     }
 
-    public String getTotalAmount() {
+    public Double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(String totalAmount) {
+    public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
