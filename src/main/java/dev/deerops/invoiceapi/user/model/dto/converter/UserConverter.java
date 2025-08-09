@@ -4,7 +4,7 @@ import dev.deerops.invoiceapi.user.model.dto.request.CreateUserRequest;
 import dev.deerops.invoiceapi.user.model.dto.response.UserResponse;
 import dev.deerops.invoiceapi.user.model.entity.User;
 
-public interface UserDtoConverter {
+public interface UserConverter {
     User fromCreateUserToEntity(CreateUserRequest request);
     UserResponse fromUserEntityToResponse(User entity);
 }

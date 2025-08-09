@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 @Component
-public class UserDtoConverterImpl implements UserDtoConverter{
+public class UserConverterImpl implements UserConverter {
 
     @Override
     public User fromCreateUserToEntity(CreateUserRequest request) {

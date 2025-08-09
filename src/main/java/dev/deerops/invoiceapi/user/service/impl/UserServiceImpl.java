@@ -2,7 +2,7 @@ package dev.deerops.invoiceapi.user.service.impl;
 
 import dev.deerops.invoiceapi.common.util.result.ApiResponse;
 import dev.deerops.invoiceapi.common.util.result.ResponseHelper;
-import dev.deerops.invoiceapi.user.model.dto.converter.UserDtoConverter;
+import dev.deerops.invoiceapi.user.model.dto.converter.UserConverter;
 import dev.deerops.invoiceapi.user.model.dto.request.CreateUserRequest;
 import dev.deerops.invoiceapi.user.model.dto.response.UserResponse;
 import dev.deerops.invoiceapi.user.model.entity.Role;
@@ -23,13 +23,13 @@ import java.util.Collections;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserDtoConverter userDtoConverter;
+    private final UserConverter userConverter;
     private final UserValidation userValidation;
     private final PasswordEncoder encoder;
 
-    public UserServiceImpl(UserRepository userRepository, UserDtoConverter userDtoConverter, UserValidation userValidation, PasswordEncoder encoder) {
+    public UserServiceImpl(UserRepository userRepository, UserConverter userConverter, UserValidation userValidation, PasswordEncoder encoder) {
         this.userRepository = userRepository;
-        this.userDtoConverter = userDtoConverter;
+        this.userConverter = userConverter;
         this.userValidation = userValidation;
         this.encoder = encoder;
     }
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
             throw new UserGeneralValidationsException("Exist username or email");
         }
 
-        User user = userDtoConverter.fromCreateUserToEntity(createUserRequest);
+        User user = userConverter.fromCreateUserToEntity(createUserRequest);
 
         user.setPassword(encoder.encode(user.getPassword()));
 
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
         user.setRole(Collections.singletonList(Role.USER));
         user.setEnabledAt(LocalDateTime.now());
 
-        UserResponse response = userDtoConverter
+        UserResponse response = userConverter
                 .fromUserEntityToResponse(userRepository.save(user));
 
         return new ResponseEntity<>(ResponseHelper.CREATE(response), HttpStatus.CREATED);
