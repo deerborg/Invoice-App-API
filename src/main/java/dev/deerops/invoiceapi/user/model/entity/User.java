@@ -1,11 +1,13 @@
 package dev.deerops.invoiceapi.user.model.entity;
 
+import dev.deerops.invoiceapi.invoice.model.entity.Invoice;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -43,6 +45,8 @@ public class User implements UserDetails {
     private List<Role> role;
 
 
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Invoice> invoices = new ArrayList<>();
 
 
 
@@ -64,6 +68,15 @@ public class User implements UserDetails {
     }
 
     public User() {
+    }
+
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
     public String getUserId() {

@@ -3,9 +3,10 @@ package dev.deerops.invoiceapi.user.model.dto.converter;
 import dev.deerops.invoiceapi.user.model.dto.request.CreateUserRequest;
 import dev.deerops.invoiceapi.user.model.dto.response.UserResponse;
 import dev.deerops.invoiceapi.user.model.entity.User;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-
+@Component
 public class UserDtoConverterImpl implements UserDtoConverter{
 
     @Override

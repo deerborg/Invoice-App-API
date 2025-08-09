@@ -1,4 +1,4 @@
-package dev.deerops.invoiceapi.security.jwt;
+package dev.deerops.invoiceapi.common.config.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
