@@ -1,31 +1,31 @@
-## Technologies and Libraries Used
+# Invoice API
 
-- **Spring Boot 3.5.4**  
-  Used as the main application framework.
+> ⚠️ This project is currently under active development. APIs and features are subject to change.
 
-- **Java 17**  
-  The Java version used in the project.
+---
 
-- **Spring Boot Starter Dependencies:**
-    - `spring-boot-starter-web`: For building REST APIs.
-    - `spring-boot-starter-data-jpa`: For data access with JPA.
-    - `spring-boot-starter-security`: For authentication and authorization.
-    - `spring-boot-starter-mail`: For sending emails.
-    - `spring-boot-starter-amqp`: For messaging with RabbitMQ.
+### Technologies and Libraries Used
 
-- **Database:**
-    - PostgreSQL (`org.postgresql:postgresql`) — runtime scope PostgreSQL database driver.
+- **Spring Boot 3.5.4** — Main application framework.
+- **Java 17** — Language level.
+- **Spring Starters:**
+    - `spring-boot-starter-web` — REST API development.
+    - `spring-boot-starter-data-jpa` — Database interaction using JPA.
+    - `spring-boot-starter-security` — Authentication and authorization.
+    - `spring-boot-starter-mail` — Sending emails.
+    - `spring-boot-starter-amqp` — Messaging with RabbitMQ.
+- **Database:** PostgreSQL (`org.postgresql:postgresql`) — runtime driver.
+- **JWT:** `jjwt-api`, `jjwt-impl`, `jjwt-jackson` — Token authentication.
+- **API Documentation:** `springdoc-openapi-starter-webmvc-ui` — OpenAPI/Swagger.
 
-- **JWT (JSON Web Token):**
-    - `jjwt-api`, `jjwt-impl`, `jjwt-jackson` — For token-based authentication.
+---
 
-- **API Documentation:**
-    - `springdoc-openapi-starter-webmvc-ui` — For OpenAPI/Swagger documentation.
+## Additional Integrations
 
-- **Testing Libraries:**
-    - `spring-boot-starter-test`
-    - `spring-rabbit-test`
-    - `spring-security-test`
+- **RabbitMQ:** Used for asynchronous message handling and audit logging.
+- **Email Service:** Sends notification emails upon important events like invoice creation.
+
+*Note: Integration with RabbitMQ and Email service is currently under development and will be added soon.*
 
 ---
 
@@ -254,58 +254,58 @@
 
 ### ApiResponseUserResponse
 
-| Field   | Type    |
-|---------|---------|
-| status  | boolean |
-| message | string  |
+| Field   | Type         |
+|---------|--------------|
+| status  | boolean      |
+| message | string       |
 | data    | UserResponse |
 
 ---
 
 ### UserResponse
 
-| Field    | Type    |
-|----------|---------|
-| userId   | string  |
+| Field    | Type               |
+|----------|--------------------|
+| userId   | string             |
 | createAt | string (date-time) |
 
 ---
 
 ### CreateInvoiceRequest
 
-| Field          | Type   |
-|----------------|--------|
-| customerName   | string |
-| customerEmail  | string |
-| totalAmount    | number (double) |
-| taxAmount      | number (double) |
-| subTotal       | number (double) |
-| details        | string |
-| userId         | string |
-
----
-
-### ApiResponseInvoiceDetailsResponse
-
-| Field   | Type    |
-|---------|---------|
-| status  | boolean |
-| message | string  |
-| data    | InvoiceDetailsResponse |
-
----
-
-### InvoiceDetailsResponse
-
 | Field         | Type            |
 |---------------|-----------------|
-| invoiceId     | integer (int64) |
 | customerName  | string          |
 | customerEmail | string          |
 | totalAmount   | number (double) |
 | taxAmount     | number (double) |
 | subTotal      | number (double) |
 | details       | string          |
+| userId        | string          |
+
+---
+
+### ApiResponseInvoiceDetailsResponse
+
+| Field   | Type                   |
+|---------|------------------------|
+| status  | boolean                |
+| message | string                 |
+| data    | InvoiceDetailsResponse |
+
+---
+
+### InvoiceDetailsResponse
+
+| Field         | Type               |
+|---------------|--------------------|
+| invoiceId     | integer (int64)    |
+| customerName  | string             |
+| customerEmail | string             |
+| totalAmount   | number (double)    |
+| taxAmount     | number (double)    |
+| subTotal      | number (double)    |
+| details       | string             |
 | createdAt     | string (date-time) |
 
 ---
@@ -329,9 +329,9 @@
 
 ### ApiResponseListInvoiceDetailsResponse
 
-| Field   | Type    |
-|---------|---------|
-| status  | boolean |
-| message | string  |
+| Field   | Type                            |
+|---------|---------------------------------|
+| status  | boolean                         |
+| message | string                          |
 | data    | Array of InvoiceDetailsResponse |
 
