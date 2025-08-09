@@ -1,3 +1,118 @@
+## Technologies and Libraries Used
+
+- **Spring Boot 3.5.4**  
+  Used as the main application framework.
+
+- **Java 17**  
+  The Java version used in the project.
+
+- **Spring Boot Starter Dependencies:**
+    - `spring-boot-starter-web`: For building REST APIs.
+    - `spring-boot-starter-data-jpa`: For data access with JPA.
+    - `spring-boot-starter-security`: For authentication and authorization.
+    - `spring-boot-starter-mail`: For sending emails.
+    - `spring-boot-starter-amqp`: For messaging with RabbitMQ.
+
+- **Database:**
+    - PostgreSQL (`org.postgresql:postgresql`) — runtime scope PostgreSQL database driver.
+
+- **JWT (JSON Web Token):**
+    - `jjwt-api`, `jjwt-impl`, `jjwt-jackson` — For token-based authentication.
+
+- **API Documentation:**
+    - `springdoc-openapi-starter-webmvc-ui` — For OpenAPI/Swagger documentation.
+
+- **Testing Libraries:**
+    - `spring-boot-starter-test`
+    - `spring-rabbit-test`
+    - `spring-security-test`
+
+---
+
+## pom.xml Summary
+
+```xml
+<properties>
+    <java.version>17</java.version>
+</properties>
+
+<dependencies>
+<!-- Spring Boot Starter Dependencies -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+
+<!-- Database -->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
+
+<!-- JWT -->
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-api</artifactId>
+    <version>0.12.6</version>
+</dependency>
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-impl</artifactId>
+    <version>0.12.6</version>
+    <scope>runtime</scope>
+</dependency>
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-jackson</artifactId>
+    <version>0.12.6</version>
+    <scope>runtime</scope>
+</dependency>
+
+<!-- OpenAPI / Swagger -->
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.5.0</version>
+</dependency>
+
+<!-- Testing -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.springframework.amqp</groupId>
+    <artifactId>spring-rabbit-test</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-test</artifactId>
+    <scope>test</scope>
+</dependency>
+</dependencies>
+
+```
+
+
 
 # API Documentation
 
